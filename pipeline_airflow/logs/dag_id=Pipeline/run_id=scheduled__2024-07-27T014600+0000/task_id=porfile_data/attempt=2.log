@@ -1,0 +1,36 @@
+[2024-07-27T01:49:07.524+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T01:49:07.580+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.porfile_data scheduled__2024-07-27T01:46:00+00:00 [queued]>
+[2024-07-27T01:49:07.606+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.porfile_data scheduled__2024-07-27T01:46:00+00:00 [queued]>
+[2024-07-27T01:49:07.617+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-07-27T01:49:07.666+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): porfile_data> on 2024-07-27 01:46:00+00:00
+[2024-07-27T01:49:07.687+0000] {standard_task_runner.py:64} INFO - Started process 2491 to run task
+[2024-07-27T01:49:07.700+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'porfile_data', 'scheduled__2024-07-27T01:46:00+00:00', '--job-id', '349', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpnxsjtym6']
+[2024-07-27T01:49:07.707+0000] {standard_task_runner.py:91} INFO - Job 349: Subtask porfile_data
+[2024-07-27T01:49:07.814+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.porfile_data scheduled__2024-07-27T01:46:00+00:00 [running]> on host 31ef1e6fa80b
+[2024-07-27T01:49:08.014+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='porfile_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-27T01:46:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-27T01:46:00+00:00'
+[2024-07-27T01:49:08.016+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T01:49:08.030+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T01:49:08.031+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/funtions.py", line 36, in _profiling
+    profile=ProfileReport(data_df, title='Data Quality Report')
+  File "/home/airflow/.local/lib/python3.8/site-packages/ydata_profiling/profile_report.py", line 110, in __init__
+    self.__validate_inputs(df, minimal, tsmode, config_file, lazy)
+  File "/home/airflow/.local/lib/python3.8/site-packages/ydata_profiling/profile_report.py", line 196, in __validate_inputs
+    df is not None and df.rdd.isEmpty()
+AttributeError: 'str' object has no attribute 'rdd'
+[2024-07-27T01:49:08.054+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=Pipeline, task_id=porfile_data, run_id=scheduled__2024-07-27T01:46:00+00:00, execution_date=20240727T014600, start_date=20240727T014907, end_date=20240727T014908
+[2024-07-27T01:49:08.081+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 349 for task porfile_data ('str' object has no attribute 'rdd'; 2491)
+[2024-07-27T01:49:08.116+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-27T01:49:08.143+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T01:49:08.147+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

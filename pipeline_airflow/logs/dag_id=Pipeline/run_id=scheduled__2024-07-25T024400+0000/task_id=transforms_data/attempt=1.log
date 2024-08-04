@@ -1,0 +1,39 @@
+[2024-07-26T21:00:19.952+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-26T21:00:20.169+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T02:44:00+00:00 [queued]>
+[2024-07-26T21:00:20.189+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T02:44:00+00:00 [queued]>
+[2024-07-26T21:00:20.199+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-26T21:00:20.216+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transforms_data> on 2024-07-25 02:44:00+00:00
+[2024-07-26T21:00:20.227+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=577) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-26T21:00:20.233+0000] {standard_task_runner.py:64} INFO - Started process 579 to run task
+[2024-07-26T21:00:20.233+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'transforms_data', 'scheduled__2024-07-25T02:44:00+00:00', '--job-id', '325', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpup210eit']
+[2024-07-26T21:00:20.242+0000] {standard_task_runner.py:91} INFO - Job 325: Subtask transforms_data
+[2024-07-26T21:00:20.346+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T02:44:00+00:00 [running]> on host 0d7463cdaa2c
+[2024-07-26T21:00:20.576+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='transforms_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-25T02:44:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-25T02:44:00+00:00'
+[2024-07-26T21:00:20.583+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-26T21:00:20.740+0000] {logging_mixin.py:188} INFO - 
+Datos convertido en DataFrame:
+[2024-07-26T21:00:20.755+0000] {logging_mixin.py:188} INFO -    orden       fecha      hora  ...   tipo_hecho clase_vehiculo tipo_de_servicio
+0     1  02/01/2021  20:45:00  ...  Volcamiento      AUTOMOVIL       PARTICULAR
+
+[1 rows x 9 columns]
+[2024-07-26T21:00:20.757+0000] {python.py:237} INFO - Done. Returned value was:     orden       fecha      hora  ...   tipo_hecho clase_vehiculo tipo_de_servicio
+0       1  02/01/2021  20:45:00  ...  Volcamiento      AUTOMOVIL       PARTICULAR
+1       2  03/01/2021  11:50:00  ...       Choque      AUTOMOVIL          PUBLICO
+2       3  04/01/2021  13:20:00  ...       Choque    MOTOCICLETA       PARTICULAR
+3       4  04/01/2021  15:30:00  ...       Choque    MOTOCICLETA          OFICIAL
+4       5  04/01/2021  19:00:00  ...       Choque      AUTOMOVIL       PARTICULAR
+..    ...         ...       ...  ...          ...            ...              ...
+995   996  06/11/2021  08:30:00  ...       Choque      AUTOMOVIL       PARTICULAR
+996   997  06/11/2021  13:25:00  ...       Choque      CAMIONETA       PARTICULAR
+997   998  06/11/2021  14:30:00  ...       Choque      AUTOMOVIL       PARTICULAR
+998   999  06/11/2021  14:50:00  ...       Choque      CAMIONETA       PARTICULAR
+999  1000  06/11/2021  19:00:00  ...       Choque      AUTOMOVIL       PARTICULAR
+
+[1000 rows x 9 columns]
+[2024-07-26T21:00:20.793+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-26T21:00:20.858+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=Pipeline, task_id=transforms_data, run_id=scheduled__2024-07-25T02:44:00+00:00, execution_date=20240725T024400, start_date=20240726T210020, end_date=20240726T210020
+[2024-07-26T21:00:20.897+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-07-26T21:00:20.915+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-26T21:00:20.917+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

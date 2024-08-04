@@ -1,0 +1,68 @@
+[2024-07-31T04:42:08.213+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-31T04:42:08.236+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-31T04:40:00+00:00 [queued]>
+[2024-07-31T04:42:08.245+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-31T04:40:00+00:00 [queued]>
+[2024-07-31T04:42:08.247+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-31T04:42:08.259+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transforms_data> on 2024-07-31 04:40:00+00:00
+[2024-07-31T04:42:08.298+0000] {standard_task_runner.py:64} INFO - Started process 19971 to run task
+[2024-07-31T04:42:08.301+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'transforms_data', 'scheduled__2024-07-31T04:40:00+00:00', '--job-id', '691', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmp_hoi9v2m']
+[2024-07-31T04:42:08.309+0000] {standard_task_runner.py:91} INFO - Job 691: Subtask transforms_data
+[2024-07-31T04:42:08.383+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.transforms_data scheduled__2024-07-31T04:40:00+00:00 [running]> on host f17ca52b44b4
+[2024-07-31T04:42:08.469+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='transforms_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-31T04:40:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-31T04:40:00+00:00'
+[2024-07-31T04:42:08.471+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-31T04:42:08.492+0000] {logging_mixin.py:188} INFO - Received temp_file path from XCom: /tmp/temp_data.parquet
+[2024-07-31T04:42:08.528+0000] {logging_mixin.py:188} INFO - 
+Datos convertido en DataFrame:
+[2024-07-31T04:42:08.788+0000] {logging_mixin.py:188} INFO -    orden       fecha      hora  ...   tipo_hecho clase_vehiculo tipo_de_servicio
+0     1  02/01/2021  20:45:00  ...  Volcamiento      AUTOMOVIL       PARTICULAR
+
+[1 rows x 9 columns]
+[2024-07-31T04:42:09.520+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:320: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(k, replacements))
+
+[2024-07-31T04:42:09.546+0000] {logging_mixin.py:188} WARNING - Summarize dataset:   0%|          | 0/5 [00:00<?, ?it/s]
+[2024-07-31T04:42:09.817+0000] {logging_mixin.py:188} WARNING - Summarize dataset:   0%|          | 0/14 [00:00<?, ?it/s, Describe variable:tipo_hecho]
+[2024-07-31T04:42:09.819+0000] {logging_mixin.py:188} WARNING - Summarize dataset:   7%|7         | 1/14 [00:00<00:03,  3.69it/s, Describe variable:tipo_hecho]
+[2024-07-31T04:42:09.865+0000] {logging_mixin.py:188} WARNING - Summarize dataset:   7%|7         | 1/14 [00:00<00:03,  3.69it/s, Describe variable:orden]     
+[2024-07-31T04:42:09.872+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  14%|#4        | 2/14 [00:00<00:03,  3.69it/s, Describe variable:clase_vehiculo]
+[2024-07-31T04:42:09.889+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  21%|##1       | 3/14 [00:00<00:02,  3.69it/s, Describe variable:fecha]         
+[2024-07-31T04:42:09.963+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  29%|##8       | 4/14 [00:00<00:02,  3.69it/s, Describe variable:tipo_de_servicio]
+[2024-07-31T04:42:09.970+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  36%|###5      | 5/14 [00:00<00:00, 13.80it/s, Describe variable:tipo_de_servicio]
+[2024-07-31T04:42:09.971+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  36%|###5      | 5/14 [00:00<00:00, 13.80it/s, Describe variable:direcci_n]       
+[2024-07-31T04:42:09.972+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  43%|####2     | 6/14 [00:00<00:00, 13.80it/s, Describe variable:hora]     
+[2024-07-31T04:42:09.975+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  50%|#####     | 7/14 [00:00<00:00, 13.80it/s, Describe variable:tipo_gravedad]
+[2024-07-31T04:42:09.982+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  57%|#####7    | 8/14 [00:00<00:00, 13.80it/s, Describe variable:nro_formulario]
+[2024-07-31T04:42:09.984+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  64%|######4   | 9/14 [00:00<00:00, 13.80it/s, Get variable types]              
+[2024-07-31T04:42:09.985+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  67%|######6   | 10/15 [00:00<00:00, 13.80it/s, Get dataframe statistics]
+[2024-07-31T04:42:09.987+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  69%|######8   | 11/16 [00:00<00:00, 13.80it/s, Calculate auto correlation]
+[2024-07-31T04:42:10.171+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  75%|#######5  | 12/16 [00:00<00:00, 23.40it/s, Calculate auto correlation]
+[2024-07-31T04:42:10.172+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  75%|#######5  | 12/16 [00:00<00:00, 23.40it/s, Get scatter matrix]        
+[2024-07-31T04:42:10.173+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  71%|#######   | 12/17 [00:00<00:00, 23.40it/s, scatter orden, orden]
+[2024-07-31T04:42:10.226+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2024-07-31T04:42:10.240+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2024-07-31T04:42:10.248+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2024-07-31T04:42:10.252+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2024-07-31T04:42:19.416+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  68%|######8   | 13/19 [00:09<00:00, 23.40it/s, Missing diagram bar] 
+[2024-07-31T04:42:19.723+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  74%|#######3  | 14/19 [00:10<00:00, 23.40it/s, Missing diagram matrix]
+[2024-07-31T04:42:19.841+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  79%|#######8  | 15/19 [00:10<00:03,  1.02it/s, Missing diagram matrix]
+[2024-07-31T04:42:19.843+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  79%|#######8  | 15/19 [00:10<00:03,  1.02it/s, Take sample]           
+[2024-07-31T04:42:19.844+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  84%|########4 | 16/19 [00:10<00:02,  1.02it/s, Detecting duplicates]
+[2024-07-31T04:42:19.853+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  89%|########9 | 17/19 [00:10<00:01,  1.02it/s, Get alerts]          
+[2024-07-31T04:42:19.854+0000] {logging_mixin.py:188} WARNING - Summarize dataset:  95%|#########4| 18/19 [00:10<00:00,  1.02it/s, Get reproduction details]
+[2024-07-31T04:42:19.856+0000] {logging_mixin.py:188} WARNING - Summarize dataset: 100%|##########| 19/19 [00:10<00:00,  1.02it/s, Completed]               
+[2024-07-31T04:42:19.857+0000] {logging_mixin.py:188} WARNING - Summarize dataset: 100%|##########| 19/19 [00:10<00:00,  1.84it/s, Completed]
+[2024-07-31T04:42:19.858+0000] {logging_mixin.py:188} WARNING - Generate report structure:   0%|          | 0/1 [00:00<?, ?it/s]
+[2024-07-31T04:42:24.114+0000] {logging_mixin.py:188} WARNING - Generate report structure: 100%|##########| 1/1 [00:04<00:00,  4.25s/it]
+[2024-07-31T04:42:24.115+0000] {logging_mixin.py:188} WARNING - Generate report structure: 100%|##########| 1/1 [00:04<00:00,  4.26s/it]
+[2024-07-31T04:42:24.117+0000] {logging_mixin.py:188} WARNING - Render HTML:   0%|          | 0/1 [00:00<?, ?it/s]
+[2024-07-31T04:42:25.236+0000] {logging_mixin.py:188} WARNING - Render HTML: 100%|##########| 1/1 [00:01<00:00,  1.12s/it]
+[2024-07-31T04:42:25.238+0000] {logging_mixin.py:188} WARNING - Render HTML: 100%|##########| 1/1 [00:01<00:00,  1.12s/it]
+[2024-07-31T04:42:25.240+0000] {logging_mixin.py:188} WARNING - Export report to file:   0%|          | 0/1 [00:00<?, ?it/s]
+[2024-07-31T04:42:25.350+0000] {logging_mixin.py:188} WARNING - Export report to file: 100%|##########| 1/1 [00:00<00:00,  9.25it/s]
+[2024-07-31T04:42:25.353+0000] {logging_mixin.py:188} WARNING - Export report to file: 100%|##########| 1/1 [00:00<00:00,  8.96it/s]
+[2024-07-31T04:42:25.357+0000] {logging_mixin.py:188} INFO - Informe de perfil guardado en: /opt/***/dags/data/profile_report_20240731_044000.html
+[2024-07-31T04:42:25.365+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-31T04:42:25.369+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-31T04:42:25.413+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=Pipeline, task_id=transforms_data, run_id=scheduled__2024-07-31T04:40:00+00:00, execution_date=20240731T044000, start_date=20240731T044208, end_date=20240731T044225
+[2024-07-31T04:42:25.541+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-07-31T04:42:25.607+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-31T04:42:25.625+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

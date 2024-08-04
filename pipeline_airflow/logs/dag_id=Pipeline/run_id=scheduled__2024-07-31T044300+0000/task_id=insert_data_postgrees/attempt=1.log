@@ -1,0 +1,20 @@
+[2024-07-31T04:44:48.688+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-31T04:44:48.712+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.insert_data_postgrees scheduled__2024-07-31T04:43:00+00:00 [queued]>
+[2024-07-31T04:44:48.721+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.insert_data_postgrees scheduled__2024-07-31T04:43:00+00:00 [queued]>
+[2024-07-31T04:44:48.722+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-31T04:44:48.737+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data_postgrees> on 2024-07-31 04:43:00+00:00
+[2024-07-31T04:44:48.749+0000] {standard_task_runner.py:64} INFO - Started process 20751 to run task
+[2024-07-31T04:44:48.753+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'insert_data_postgrees', 'scheduled__2024-07-31T04:43:00+00:00', '--job-id', '712', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpuwpnvhs6']
+[2024-07-31T04:44:48.758+0000] {standard_task_runner.py:91} INFO - Job 712: Subtask insert_data_postgrees
+[2024-07-31T04:44:48.829+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.insert_data_postgrees scheduled__2024-07-31T04:43:00+00:00 [running]> on host f17ca52b44b4
+[2024-07-31T04:44:48.955+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='insert_data_postgrees' AIRFLOW_CTX_EXECUTION_DATE='2024-07-31T04:43:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-31T04:43:00+00:00'
+[2024-07-31T04:44:48.963+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-31T04:44:49.354+0000] {base.py:84} INFO - Using connection ID 'connect_db' for task execution.
+[2024-07-31T04:44:49.698+0000] {logging_mixin.py:188} INFO - Se insertaron 1000 filas en la tabla 'Taza_de_accidentes_2021_2022'.
+[2024-07-31T04:44:49.702+0000] {logging_mixin.py:188} INFO - Conexión a la base de datos cerrada.
+[2024-07-31T04:44:49.706+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-31T04:44:49.710+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-31T04:44:49.753+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=Pipeline, task_id=insert_data_postgrees, run_id=scheduled__2024-07-31T04:43:00+00:00, execution_date=20240731T044300, start_date=20240731T044448, end_date=20240731T044449
+[2024-07-31T04:44:49.854+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-07-31T04:44:49.906+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-31T04:44:49.919+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

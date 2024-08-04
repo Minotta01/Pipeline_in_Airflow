@@ -1,0 +1,42 @@
+[2024-07-31T03:01:43.109+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-31T03:01:43.131+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.insert_data_postgrees scheduled__2024-07-31T03:00:00+00:00 [queued]>
+[2024-07-31T03:01:43.140+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.insert_data_postgrees scheduled__2024-07-31T03:00:00+00:00 [queued]>
+[2024-07-31T03:01:43.142+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-31T03:01:43.153+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data_postgrees> on 2024-07-31 03:00:00+00:00
+[2024-07-31T03:01:43.161+0000] {standard_task_runner.py:64} INFO - Started process 13789 to run task
+[2024-07-31T03:01:43.164+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'insert_data_postgrees', 'scheduled__2024-07-31T03:00:00+00:00', '--job-id', '628', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpcmlowi3e']
+[2024-07-31T03:01:43.168+0000] {standard_task_runner.py:91} INFO - Job 628: Subtask insert_data_postgrees
+[2024-07-31T03:01:43.214+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.insert_data_postgrees scheduled__2024-07-31T03:00:00+00:00 [running]> on host f17ca52b44b4
+[2024-07-31T03:01:43.301+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='insert_data_postgrees' AIRFLOW_CTX_EXECUTION_DATE='2024-07-31T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-31T03:00:00+00:00'
+[2024-07-31T03:01:43.302+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-31T03:01:43.346+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-31T03:01:43.348+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/funtions.py", line 163, in insert_data_postgrees
+    data_df = pd.read_parquet(data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 509, in read_parquet
+    return impl.read(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 227, in read
+    pa_table = self.api.parquet.read_table(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pyarrow/parquet/core.py", line 1762, in read_table
+    dataset = ParquetDataset(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pyarrow/parquet/core.py", line 1340, in __init__
+    self._dataset = ds.dataset(path_or_paths, filesystem=filesystem,
+  File "/home/airflow/.local/lib/python3.8/site-packages/pyarrow/dataset.py", line 814, in dataset
+    raise TypeError(
+TypeError: Expected a path-like, list of path-likes or a list of Datasets instead of the given type: NoneType
+[2024-07-31T03:01:43.613+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=Pipeline, task_id=insert_data_postgrees, run_id=scheduled__2024-07-31T03:00:00+00:00, execution_date=20240731T030000, start_date=20240731T030143, end_date=20240731T030143
+[2024-07-31T03:01:43.643+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 628 for task insert_data_postgrees (Expected a path-like, list of path-likes or a list of Datasets instead of the given type: NoneType; 13789)
+[2024-07-31T03:01:43.744+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-31T03:01:43.786+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-31T03:01:43.799+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

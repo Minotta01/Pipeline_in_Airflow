@@ -1,0 +1,23 @@
+[2024-07-29T23:50:52.948+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-29T23:50:52.994+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.data_cleansing scheduled__2024-07-29T23:49:00+00:00 [queued]>
+[2024-07-29T23:50:53.003+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.data_cleansing scheduled__2024-07-29T23:49:00+00:00 [queued]>
+[2024-07-29T23:50:53.014+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-29T23:50:53.033+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): data_cleansing> on 2024-07-29 23:49:00+00:00
+[2024-07-29T23:50:53.044+0000] {standard_task_runner.py:64} INFO - Started process 20171 to run task
+[2024-07-29T23:50:53.048+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'data_cleansing', 'scheduled__2024-07-29T23:49:00+00:00', '--job-id', '466', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmps0h4qkg0']
+[2024-07-29T23:50:53.052+0000] {standard_task_runner.py:91} INFO - Job 466: Subtask data_cleansing
+[2024-07-29T23:50:53.115+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.data_cleansing scheduled__2024-07-29T23:49:00+00:00 [running]> on host 964cbcd9e13f
+[2024-07-29T23:50:53.277+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='data_cleansing' AIRFLOW_CTX_EXECUTION_DATE='2024-07-29T23:49:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-29T23:49:00+00:00'
+[2024-07-29T23:50:53.279+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-29T23:50:54.188+0000] {logging_mixin.py:188} INFO - 
+
+            fecha      hora  ... tipo_de_servicio franja horaria
+0  02/01/2021  20:45:00  ...       PARTICULAR          Noche
+
+[1 rows x 9 columns]
+[2024-07-29T23:50:54.192+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-29T23:50:54.193+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-29T23:50:54.204+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=Pipeline, task_id=data_cleansing, run_id=scheduled__2024-07-29T23:49:00+00:00, execution_date=20240729T234900, start_date=20240729T235052, end_date=20240729T235054
+[2024-07-29T23:50:54.266+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-07-29T23:50:54.294+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-29T23:50:54.298+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,43 @@
+[2024-07-25T05:05:03.962+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-25T05:05:04.123+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T05:02:00+00:00 [queued]>
+[2024-07-25T05:05:04.131+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T05:02:00+00:00 [queued]>
+[2024-07-25T05:05:04.133+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-07-25T05:05:04.145+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transforms_data> on 2024-07-25 05:02:00+00:00
+[2024-07-25T05:05:04.153+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=2981) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-25T05:05:04.155+0000] {standard_task_runner.py:64} INFO - Started process 2983 to run task
+[2024-07-25T05:05:04.155+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'transforms_data', 'scheduled__2024-07-25T05:02:00+00:00', '--job-id', '204', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpfni96o83']
+[2024-07-25T05:05:04.158+0000] {standard_task_runner.py:91} INFO - Job 204: Subtask transforms_data
+[2024-07-25T05:05:04.205+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T05:02:00+00:00 [running]> on host f7d3c5e5ad21
+[2024-07-25T05:05:04.316+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='transforms_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-25T05:02:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-25T05:02:00+00:00'
+[2024-07-25T05:05:04.318+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-25T05:05:04.331+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-25T05:05:04.332+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/funtions.py", line 19, in transform_data
+    data_df=pd.DataFrame(data)
+            ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 841, in __init__
+    raise ValueError("DataFrame constructor not properly called!")
+ValueError: DataFrame constructor not properly called!
+[2024-07-25T05:05:04.365+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=Pipeline, task_id=transforms_data, run_id=scheduled__2024-07-25T05:02:00+00:00, execution_date=20240725T050200, start_date=20240725T050504, end_date=20240725T050504
+[2024-07-25T05:05:04.381+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 204 for task transforms_data (DataFrame constructor not properly called!; 2983)
+[2024-07-25T05:05:04.410+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-25T05:05:04.445+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-25T05:05:04.450+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,40 @@
+[2024-07-31T02:55:16.431+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-31T02:55:16.453+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.data_cleansing scheduled__2024-07-31T02:53:00+00:00 [queued]>
+[2024-07-31T02:55:16.467+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.data_cleansing scheduled__2024-07-31T02:53:00+00:00 [queued]>
+[2024-07-31T02:55:16.468+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-31T02:55:16.478+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): data_cleansing> on 2024-07-31 02:53:00+00:00
+[2024-07-31T02:55:16.487+0000] {standard_task_runner.py:64} INFO - Started process 12849 to run task
+[2024-07-31T02:55:16.490+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'data_cleansing', 'scheduled__2024-07-31T02:53:00+00:00', '--job-id', '608', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmph_h5edob']
+[2024-07-31T02:55:16.493+0000] {standard_task_runner.py:91} INFO - Job 608: Subtask data_cleansing
+[2024-07-31T02:55:16.540+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.data_cleansing scheduled__2024-07-31T02:53:00+00:00 [running]> on host f17ca52b44b4
+[2024-07-31T02:55:16.623+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='data_cleansing' AIRFLOW_CTX_EXECUTION_DATE='2024-07-31T02:53:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-31T02:53:00+00:00'
+[2024-07-31T02:55:16.625+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-31T02:55:16.710+0000] {logging_mixin.py:188} INFO - 
+
+            fecha      hora  ... tipo_de_servicio franja horaria
+0  02/01/2021  20:45:00  ...       PARTICULAR          Noche
+
+[1 rows x 9 columns]
+[2024-07-31T02:55:16.720+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-31T02:55:16.721+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/funtions.py", line 156, in data_cleansing
+    context['ti'].xcom_pull(key='temp_file_path',value=temp_file)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+TypeError: xcom_pull() got an unexpected keyword argument 'value'
+[2024-07-31T02:55:16.733+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=Pipeline, task_id=data_cleansing, run_id=scheduled__2024-07-31T02:53:00+00:00, execution_date=20240731T025300, start_date=20240731T025516, end_date=20240731T025516
+[2024-07-31T02:55:16.745+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 608 for task data_cleansing (xcom_pull() got an unexpected keyword argument 'value'; 12849)
+[2024-07-31T02:55:16.784+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-31T02:55:16.823+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-31T02:55:16.825+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

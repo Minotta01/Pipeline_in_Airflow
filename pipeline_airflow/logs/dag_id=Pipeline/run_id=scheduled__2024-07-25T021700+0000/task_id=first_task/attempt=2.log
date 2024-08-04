@@ -1,0 +1,42 @@
+[2024-07-25T02:19:37.582+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-25T02:19:37.747+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.first_task scheduled__2024-07-25T02:17:00+00:00 [queued]>
+[2024-07-25T02:19:37.755+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.first_task scheduled__2024-07-25T02:17:00+00:00 [queued]>
+[2024-07-25T02:19:37.766+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-07-25T02:19:37.785+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): first_task> on 2024-07-25 02:17:00+00:00
+[2024-07-25T02:19:37.793+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=273) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-25T02:19:37.795+0000] {standard_task_runner.py:64} INFO - Started process 275 to run task
+[2024-07-25T02:19:37.795+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'first_task', 'scheduled__2024-07-25T02:17:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpm4lq_i0b']
+[2024-07-25T02:19:37.798+0000] {standard_task_runner.py:91} INFO - Job 11: Subtask first_task
+[2024-07-25T02:19:37.853+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.first_task scheduled__2024-07-25T02:17:00+00:00 [running]> on host f7d3c5e5ad21
+[2024-07-25T02:19:37.934+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='first_task' AIRFLOW_CTX_EXECUTION_DATE='2024-07-25T02:17:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-25T02:17:00+00:00'
+[2024-07-25T02:19:37.936+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-25T02:19:38.621+0000] {logging_mixin.py:188} INFO - Obtained data
+[2024-07-25T02:19:38.625+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-25T02:19:38.627+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipeline.py", line 37, in get_data
+    print('\n', data.head(1))
+                ^^^^^^^^^
+AttributeError: 'bytes' object has no attribute 'head'
+[2024-07-25T02:19:38.673+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=Pipeline, task_id=first_task, run_id=scheduled__2024-07-25T02:17:00+00:00, execution_date=20240725T021700, start_date=20240725T021937, end_date=20240725T021938
+[2024-07-25T02:19:38.722+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 11 for task first_task ('bytes' object has no attribute 'head'; 275)
+[2024-07-25T02:19:38.778+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-25T02:19:38.854+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-25T02:19:38.859+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

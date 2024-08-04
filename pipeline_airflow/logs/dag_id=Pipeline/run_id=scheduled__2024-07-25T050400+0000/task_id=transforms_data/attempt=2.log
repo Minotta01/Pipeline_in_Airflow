@@ -1,0 +1,50 @@
+[2024-07-25T05:06:14.273+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-25T05:06:14.457+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T05:04:00+00:00 [queued]>
+[2024-07-25T05:06:14.483+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T05:04:00+00:00 [queued]>
+[2024-07-25T05:06:14.501+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-07-25T05:06:14.517+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transforms_data> on 2024-07-25 05:04:00+00:00
+[2024-07-25T05:06:14.526+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=3007) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-25T05:06:14.528+0000] {standard_task_runner.py:64} INFO - Started process 3009 to run task
+[2024-07-25T05:06:14.528+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'transforms_data', 'scheduled__2024-07-25T05:04:00+00:00', '--job-id', '208', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpr7fo3ia9']
+[2024-07-25T05:06:14.531+0000] {standard_task_runner.py:91} INFO - Job 208: Subtask transforms_data
+[2024-07-25T05:06:14.580+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T05:04:00+00:00 [running]> on host f7d3c5e5ad21
+[2024-07-25T05:06:14.735+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='transforms_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-25T05:04:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-25T05:04:00+00:00'
+[2024-07-25T05:06:14.737+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-25T05:06:14.750+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-25T05:06:14.751+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/funtions.py", line 20, in transform_data
+    data_list=json.loads(data)
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 3 (char 2)
+[2024-07-25T05:06:14.770+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=Pipeline, task_id=transforms_data, run_id=scheduled__2024-07-25T05:04:00+00:00, execution_date=20240725T050400, start_date=20240725T050614, end_date=20240725T050614
+[2024-07-25T05:06:14.782+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 208 for task transforms_data (Expecting property name enclosed in double quotes: line 1 column 3 (char 2); 3009)
+[2024-07-25T05:06:14.824+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-25T05:06:14.874+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-25T05:06:14.889+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

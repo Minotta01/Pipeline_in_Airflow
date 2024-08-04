@@ -1,0 +1,21 @@
+[2024-07-25T02:36:03.029+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-25T02:36:03.186+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.first_task scheduled__2024-07-25T02:35:00+00:00 [queued]>
+[2024-07-25T02:36:03.196+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.first_task scheduled__2024-07-25T02:35:00+00:00 [queued]>
+[2024-07-25T02:36:03.208+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-25T02:36:03.229+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): first_task> on 2024-07-25 02:35:00+00:00
+[2024-07-25T02:36:03.237+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=555) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-25T02:36:03.239+0000] {standard_task_runner.py:64} INFO - Started process 557 to run task
+[2024-07-25T02:36:03.240+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'first_task', 'scheduled__2024-07-25T02:35:00+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpsj5bgzml']
+[2024-07-25T02:36:03.243+0000] {standard_task_runner.py:91} INFO - Job 35: Subtask first_task
+[2024-07-25T02:36:03.294+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.first_task scheduled__2024-07-25T02:35:00+00:00 [running]> on host f7d3c5e5ad21
+[2024-07-25T02:36:03.386+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='first_task' AIRFLOW_CTX_EXECUTION_DATE='2024-07-25T02:35:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-25T02:35:00+00:00'
+[2024-07-25T02:36:03.388+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-25T02:36:04.117+0000] {logging_mixin.py:188} INFO - Obtained data
+[2024-07-25T02:36:04.119+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-25T02:36:04.122+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-25T02:36:04.133+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=Pipeline, task_id=first_task, run_id=scheduled__2024-07-25T02:35:00+00:00, execution_date=20240725T023500, start_date=20240725T023603, end_date=20240725T023604
+[2024-07-25T02:36:04.183+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-07-25T02:36:04.229+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-25T02:36:04.243+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

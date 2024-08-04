@@ -1,0 +1,58 @@
+[2024-07-25T04:23:38.645+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-25T04:23:38.793+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T04:21:00+00:00 [queued]>
+[2024-07-25T04:23:38.803+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T04:21:00+00:00 [queued]>
+[2024-07-25T04:23:38.814+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-07-25T04:23:38.854+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transforms_data> on 2024-07-25 04:21:00+00:00
+[2024-07-25T04:23:38.882+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=2131) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-25T04:23:38.887+0000] {standard_task_runner.py:64} INFO - Started process 2133 to run task
+[2024-07-25T04:23:38.884+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Pipeline', 'transforms_data', 'scheduled__2024-07-25T04:21:00+00:00', '--job-id', '98', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpf9mzyiuv']
+[2024-07-25T04:23:38.890+0000] {standard_task_runner.py:91} INFO - Job 98: Subtask transforms_data
+[2024-07-25T04:23:38.970+0000] {task_command.py:426} INFO - Running <TaskInstance: Pipeline.transforms_data scheduled__2024-07-25T04:21:00+00:00 [running]> on host f7d3c5e5ad21
+[2024-07-25T04:23:39.103+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Pipeline' AIRFLOW_CTX_TASK_ID='transforms_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-25T04:21:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-25T04:21:00+00:00'
+[2024-07-25T04:23:39.105+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-25T04:23:39.122+0000] {warnings.py:112} WARNING - /opt/***/dags/funtions.py:19: FutureWarning: Passing literal json to 'read_json' is deprecated and will be removed in a future version. To read from a literal string, wrap it in a 'StringIO' object.
+  data_df=pd.read_json(data)
+
+[2024-07-25T04:23:39.123+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-25T04:23:39.124+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/funtions.py", line 19, in transform_data
+    data_df=pd.read_json(data)
+            ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/json/_json.py", line 804, in read_json
+    return json_reader.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/json/_json.py", line 1014, in read
+    obj = self._get_object_parser(self.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/json/_json.py", line 1040, in _get_object_parser
+    obj = FrameParser(json, **kwargs).parse()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/json/_json.py", line 1173, in parse
+    self._parse()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/json/_json.py", line 1366, in _parse
+    ujson_loads(json, precise_float=self.precise_float), dtype=None
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Expected object or value
+[2024-07-25T04:23:39.132+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=Pipeline, task_id=transforms_data, run_id=scheduled__2024-07-25T04:21:00+00:00, execution_date=20240725T042100, start_date=20240725T042338, end_date=20240725T042339
+[2024-07-25T04:23:39.142+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 98 for task transforms_data (Expected object or value; 2133)
+[2024-07-25T04:23:39.185+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-25T04:23:39.202+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-25T04:23:39.204+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
